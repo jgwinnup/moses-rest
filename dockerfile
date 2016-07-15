@@ -37,8 +37,8 @@ WORKDIR /home/moses
 #build moses
 RUN git clone https://github.com/moses-smt/mosesdecoder moses
 WORKDIR /home/moses/moses
-RUN git checkout 271aaa67
-RUN ./bjam variant=release toolset=gcc-4.7 link=shared --with-xmlrpc-c=/usr --with-cmph=/usr --with-mm --with-probing-pt --with-boost=/usr
+RUN git checkout perf_moses2
+RUN ./bjam variant=release toolset=gcc-4.8 link=static --with-xmlrpc-c=/usr --with-cmph=/usr --with-mm --with-probing-pt --with-boost=/usr
 
 #Make working dirs
 WORKDIR /home/moses
@@ -48,6 +48,7 @@ RUN mkdir -p bin lm models config
 WORKDIR /home/moses
 COPY bin bin
 COPY config config
+COPY runme.sh runme.sh
 
 EXPOSE 8080
 
