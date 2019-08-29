@@ -37,7 +37,7 @@ WORKDIR /home/moses
 #build moses
 RUN git clone https://github.com/moses-smt/mosesdecoder moses
 WORKDIR /home/moses/moses
-RUN git checkout perf_moses2
+RUN git checkout master
 RUN ./bjam variant=release toolset=gcc-4.8 link=static --with-xmlrpc-c=/usr --with-cmph=/usr --with-mm --with-probing-pt --with-boost=/usr
 
 #Make working dirs
